@@ -47,10 +47,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
-    public function pegawai(){
-        return $this->hasOne(Pegawai::class, 'id_user');
-    }
-
     public function hasAnyRoles($roles){
         if($this->roles()->whereIn('nama', $roles)->first()){
             return true;
@@ -66,4 +62,8 @@ class User extends Authenticatable
 
         return false;
     }
+
+    public function liking(){
+		return $this->belongsToMany(Konten::class, 'like_konten_user','konten_id','user_id')->withPivot(['id']);
+	}
 }

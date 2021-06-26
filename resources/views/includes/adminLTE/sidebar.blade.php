@@ -22,11 +22,19 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-header">Menu Utama</li>
-          <li class="nav-item @yield('berandaActive')">
-            <a href="{{url('/home')}}" class="nav-link">
+          <li class="nav-item @yield('homeActive')">
+            <a href="{{url('/')}}" class="nav-link">
               <i class="fas fa-home nav-icon"></i>
               <p>
-                Beranda
+                Home
+              </p>
+            </a>
+          </li>
+          <li class="nav-item @yield('berandaActive')">
+            <a href="{{url('/home')}}" class="nav-link">
+              <i class="fas fa-tachometer-alt nav-icon"></i>
+              <p>
+                Beranda Dashboard
               </p>
             </a>
           </li>

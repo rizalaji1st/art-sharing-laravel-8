@@ -36,4 +36,8 @@ class Konten extends Model
     public function createdBy(){
         return $this->hasOne(User::class,'id','created_by');
     }
+
+    public function likes(){
+		return $this->belongsToMany(User::class, 'like_konten_user','user_id','id_konten')->withPivot(["id"]);
+	}
 }
