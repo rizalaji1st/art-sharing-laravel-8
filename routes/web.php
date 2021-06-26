@@ -3,15 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ManajemenAkun\ManajemenAkunController;
-use App\Http\Controllers\Admin\ManajemenRefUnit\ManajemenRefUnitController;
-use App\Http\Controllers\Admin\ManajemenRefJabatan\ManajemenRefJabatanController;
-use App\Http\Controllers\Admin\ManajemenPegawai\ManajemenPegawaiController;
-use App\Http\Controllers\Admin\ManajemenUraianPekerjaan\ManajemenUraianPekerjaanController;
-use App\Http\Controllers\Admin\ManajemenTargetSkpPegawai\ManajemenTargetSkpPegawaiController;
-use App\Http\Controllers\Admin\ManajemenUraianPekerjaanJabatan\ManajemenUraianPekerjaanJabatanController;
-use App\Http\Controllers\Pegawai\ManajemenTargetRealisasiSkp\ManajemenTargetRealisasiSkpController;
-use App\Http\Controllers\Pegawai\ManajemenTargetRealisasiSkp\ManajemenRealisasiSkpController;
-use App\Http\Controllers\Pegawai\ManajemenTargetRealisasiSkp\ManajemenTargetSkpController;
+use App\Http\Controllers\Admin\ManajemenKonten\ManajemenKontenController;
+use App\Http\Controllers\Admin\ManajemenKategori\ManajemenKategoriController;
 
 
 /*
@@ -36,12 +29,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::namespace('Admin')
         ->prefix('admin')
         ->name('admin.')
-        ->middleware('can:are-admin')
         ->group(function (){
             Route::get('/', [AdminController::class, 'index']);
             Route::namespace('ManajemenAkun')
                 ->prefix('manajemen-akun')
                 ->name('manajemen-akun.')
+                ->middleware('can:are-admin')
                 ->group(function(){
                     Route::get('/', [ManajemenAkunController::class, 'index']);
                     Route::get('/create', [ManajemenAkunController::class, 'create']);
@@ -49,6 +42,30 @@ Route::namespace('Admin')
                     Route::get('/update/{user}', [ManajemenAkunController::class, 'update']);
                     Route::post('/update/{user}/store', [ManajemenAkunController::class, 'updateStore']);
                     Route::post('/delete/{user}', [ManajemenAkunController::class, 'delete']);
+                });
+                Route::namespace('ManajemenKategori')
+                ->prefix('manajemen-kategori')
+                ->name('manajemen-kategori.')
+                ->middleware('can:are-admin')
+                ->group(function(){
+                    Route::get('/', [ManajemenKategoriController::class, 'index']);
+                    Route::get('/create', [ManajemenKategoriController::class, 'create']);
+                    Route::post('/create/store', [ManajemenKategoriController::class, 'store']);
+                    Route::get('/update/{kategori}', [ManajemenKategoriController::class, 'update']);
+                    Route::post('/update/{kategori}/store', [ManajemenKategoriController::class, 'updateStore']);
+                    Route::post('/delete/{kategori}', [ManajemenKategoriController::class, 'delete']);
+                });
+            Route::namespace('ManajemenKonten')
+                ->prefix('manajemen-konten')
+                ->name('manajemen-konten.')
+                ->middleware('can:admin-user')
+                ->group(function(){
+                    Route::get('/', [ManajemenKontenController::class, 'index']);
+                    Route::get('/create', [ManajemenKontenController::class, 'create']);
+                    Route::post('/create/store', [ManajemenKontenController::class, 'store']);
+                    Route::get('/update/{konten}', [ManajemenKontenController::class, 'update']);
+                    Route::post('/update/{konten}/store', [ManajemenKontenController::class, 'updateStore']);
+                    Route::post('/delete/{konten}', [ManajemenKontenController::class, 'delete']);
                 });
                 
         });

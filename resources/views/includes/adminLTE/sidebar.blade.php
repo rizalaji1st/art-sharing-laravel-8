@@ -38,6 +38,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item @yield('manajemenKontenActive')">
+            <a href="{{url('/admin/manajemen-konten')}}" class="nav-link">
+              <i class="fas fa-file-alt nav-icon"></i>
+              <p>
+                Manajemen Konten
+              </p>
+            </a>
+          </li>
           @can('are-admin')
             <li class="nav-header">Menu Khusus Admin</li>
             <li class="nav-item @yield('manajemenAkunActive')">
@@ -45,6 +53,14 @@
                 <i class="fas fa-user-cog nav-icon"></i>
                 <p>
                   Manajemen Akun
+                </p>
+              </a>
+            </li>
+            <li class="nav-item @yield('manajemenKategoriActive')">
+              <a href="{{url('/admin/manajemen-kategori')}}" class="nav-link">
+                <i class="fas fa-sliders-h nav-icon"></i>
+                <p>
+                  Manajemen Kategori
                 </p>
               </a>
             </li>

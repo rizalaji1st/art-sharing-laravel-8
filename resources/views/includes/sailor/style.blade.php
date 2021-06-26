@@ -16,3 +16,6 @@
 
 <!-- Template Main CSS File -->
 <link href="{{ asset('assets/Sailor/assets/css/style.css') }}" rel="stylesheet">
+
+<!-- Tiny MCE -->
+<script src="https://cdn.tiny.cloud/1/wej8ew5swf4csl68jbbl205zp3u6yscxidvd1iicyflflvlx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
