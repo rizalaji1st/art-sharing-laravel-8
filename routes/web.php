@@ -78,4 +78,5 @@ Route::namespace('Konten')
             Route::get('/detail', [KontenController::class, 'detailTest']);
             Route::get('/preview/{slug}', [KontenController::class, 'preview']);
             Route::get('/preview', [KontenController::class, 'previewTest']);
+            Route::get('/download/{slug}', [KontenController::class, 'download']);
         });

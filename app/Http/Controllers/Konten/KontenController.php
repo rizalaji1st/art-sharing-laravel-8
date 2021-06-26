@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Konten;
 use App\Models\User;
 use App\Models\RefKategoriKonten;
+use Illuminate\Support\Facades\Storage;
 
 class KontenController extends Controller
 {
@@ -33,6 +34,11 @@ class KontenController extends Controller
 
     public function previewTest(){
         return view('pages.konten.preview');
+    }
+
+    public function download($slug){
+        $konten = Konten::where('slug',$slug)->first();
+        return Storage::download($konten->path_gambar);
     }
 
     public function blog($slug){

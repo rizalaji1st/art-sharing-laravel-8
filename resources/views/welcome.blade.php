@@ -52,10 +52,23 @@
                 <img src=" {{ Storage::url($konten->path_gambar) }}" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>{{$konten->nama}}</h4>
-                  <p>App</p>
+                  <p>{{$konten->refKategori->nama}}</p>
                   <div class="portfolio-links">
-                    <a href="{{ asset('assets/Sailor/assets/img/portfolio/portfolio-1.jpg') }}" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                    <a href="{{url('/konten/preview/'.$konten->slug)}}" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                    <div>
+                      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group mr-2" role="group" aria-label="First group">
+                          <a><button type="button" class="btn btn-success">Like</button></a>
+                        </div>
+                        <div class="btn-group mr-2" role="group" aria-label="Second group">
+                          <a href="{{url('/konten/preview/'.$konten->slug)}}" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Portfolio Details"><button class="btn btn-light m-1">
+                            Preview
+                          </button></a>
+                        </div>
+                        <a href="{{url('/konten/download/'.$konten->slug)}}" target="_blank"><button class="btn btn-primary">Download</button></a>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
