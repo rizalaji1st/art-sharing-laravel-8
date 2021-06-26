@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Konten;
+use App\Models\User;
+use App\Models\RefKategoriKonten;
 
 class HomeController extends Controller
 {
@@ -13,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        return $this->middleware('auth', ['except' => ['welcome']]);
     }
 
     /**
@@ -24,5 +27,11 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function welcome(){
+        $kontens = Konten::orderBy('id','desc')->get(); 
+        $kategoris = RefKategoriKonten::all();
+        return view('welcome', compact('kontens', 'kategoris'));
     }
 }
