@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ManajemenAkun\ManajemenAkunController;
 use App\Http\Controllers\Admin\ManajemenKonten\ManajemenKontenController;
 use App\Http\Controllers\Admin\ManajemenKategori\ManajemenKategoriController;
+use App\Http\Controllers\Konten\KontenController;
 
 
 /*
@@ -18,19 +19,13 @@ use App\Http\Controllers\Admin\ManajemenKategori\ManajemenKategoriController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('about', function () {
-    return view('about');
-});
 
 Auth::routes();
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('welcome');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-/*Route::namespace('Admin')
+Route::namespace('Admin')
         ->prefix('admin')
         ->name('admin.')
         ->group(function (){
@@ -72,4 +67,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
                     Route::post('/delete/{konten}', [ManajemenKontenController::class, 'delete']);
                 });
                 
-        });*/
+        });
+
+Route::namespace('Konten')
+        ->prefix('konten')
+        ->name('konten.')
+        ->group(function(){
+            Route::get('/', [KontenController::class, 'index']);
+            Route::get('/detail/{slug}', [KontenController::class, 'detail']);
+            Route::get('/detail', [KontenController::class, 'detailTest']);
+            Route::get('/preview/{slug}', [KontenController::class, 'preview']);
+            Route::get('/preview', [KontenController::class, 'previewTest']);
+        });

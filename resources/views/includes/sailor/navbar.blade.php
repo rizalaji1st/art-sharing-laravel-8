@@ -10,8 +10,8 @@
 
       <ul>
         <li class="active"><a href="{{url('/')}}">Home</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#services">Services</a></li>
+        <li><a href="{{url('/#portfolio')}}">Arts</a></li>
+        <li><a href="{{url('/#services')}}">Services</a></li>
 
       </ul>
 
