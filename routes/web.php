@@ -1,17 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\ManajemenAkun\ManajemenAkunController;
-use App\Http\Controllers\Admin\ManajemenRefUnit\ManajemenRefUnitController;
-use App\Http\Controllers\Admin\ManajemenRefJabatan\ManajemenRefJabatanController;
-use App\Http\Controllers\Admin\ManajemenPegawai\ManajemenPegawaiController;
-use App\Http\Controllers\Admin\ManajemenUraianPekerjaan\ManajemenUraianPekerjaanController;
-use App\Http\Controllers\Admin\ManajemenTargetSkpPegawai\ManajemenTargetSkpPegawaiController;
-use App\Http\Controllers\Admin\ManajemenUraianPekerjaanJabatan\ManajemenUraianPekerjaanJabatanController;
-use App\Http\Controllers\Pegawai\ManajemenTargetRealisasiSkp\ManajemenTargetRealisasiSkpController;
-use App\Http\Controllers\Pegawai\ManajemenTargetRealisasiSkp\ManajemenRealisasiSkpController;
-use App\Http\Controllers\Pegawai\ManajemenTargetRealisasiSkp\ManajemenTargetSkpController;
 
 
 /*
@@ -28,12 +17,16 @@ use App\Http\Controllers\Pegawai\ManajemenTargetRealisasiSkp\ManajemenTargetSkpC
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('about', function () {
+    return view('about');
+});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::namespace('Admin')
+
+/*Route::namespace('Admin')
         ->prefix('admin')
         ->name('admin.')
         ->middleware('can:are-admin')
@@ -51,4 +44,4 @@ Route::namespace('Admin')
                     Route::post('/delete/{user}', [ManajemenAkunController::class, 'delete']);
                 });
                 
-        });
+        });*/
