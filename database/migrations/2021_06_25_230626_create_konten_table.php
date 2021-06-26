@@ -18,7 +18,7 @@ class CreateKontenTable extends Migration
             $table->string('judul');
             $table->string('slug');
             $table->text('deskripsi');
-            $table->bigInteger('id_kategori');
+            $table->unsignedBigInteger('id_kategori');
             $table->boolean('is_active');
             $table->boolean('is_main');
             $table->string('path_gambar');

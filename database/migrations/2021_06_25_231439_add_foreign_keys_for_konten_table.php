@@ -14,9 +14,9 @@ class AddForeignKeysForKontenTable extends Migration
     public function up()
     {
         Schema::table('konten', function (Blueprint $table) {
-            $table->foreign('id_kategori')->references('id')->on('ref_kategori_konten');
-            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('id_kategori')->references('id')->on('ref_kategori_konten')->onDelete('cascade');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
